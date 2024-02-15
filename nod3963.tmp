@@ -1,0 +1,196 @@
+[gd_scene load_steps=20 format=3 uid="uid://dv3wgmql0hddn"]
+
+[ext_resource type="Script" path="res://Player.gd" id="1_a2yem"]
+[ext_resource type="Texture2D" uid="uid://by7hr3af5ue8p" path="res://art/RL Prototype Tileset 64x64.png" id="3_63hdg"]
+[ext_resource type="Texture2D" uid="uid://1c5v120yd3vi" path="res://art/0x72_DungeonTilesetII_v1.6/0x72_DungeonTilesetII_v1.6/frames/angel_idle_anim_f0.png" id="4_1ka4x"]
+[ext_resource type="Texture2D" uid="uid://blu0k1gohd35i" path="res://art/0x72_DungeonTilesetII_v1.6/0x72_DungeonTilesetII_v1.6/frames/angel_idle_anim_f2.png" id="5_brcmo"]
+[ext_resource type="Script" path="res://Monster.gd" id="6_01eos"]
+[ext_resource type="Texture2D" uid="uid://dgnwvrl78q5un" path="res://art/0x72_DungeonTilesetII_v1.6/0x72_DungeonTilesetII_v1.6/frames/angel_idle_anim_f3.png" id="6_4fdfm"]
+[ext_resource type="Texture2D" uid="uid://b7prmjx1kjkxq" path="res://art/0x72_DungeonTilesetII_v1.6/0x72_DungeonTilesetII_v1.6/frames/big_demon_idle_anim_f0.png" id="6_48o1o"]
+[ext_resource type="Texture2D" uid="uid://bwjtr5c8kgo32" path="res://art/0x72_DungeonTilesetII_v1.6/0x72_DungeonTilesetII_v1.6/frames/big_demon_idle_anim_f1.png" id="7_j8scm"]
+[ext_resource type="Texture2D" uid="uid://85ywyhjnribs" path="res://art/0x72_DungeonTilesetII_v1.6/0x72_DungeonTilesetII_v1.6/frames/big_demon_idle_anim_f2.png" id="8_vt6qi"]
+[ext_resource type="Texture2D" uid="uid://dhaepol1pk7q1" path="res://art/0x72_DungeonTilesetII_v1.6/0x72_DungeonTilesetII_v1.6/frames/big_demon_idle_anim_f3.png" id="9_1lnji"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cj5lx"]
+texture = ExtResource("3_63hdg")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+1:0/0 = 0
+1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:0/0/physics_layer_0/angular_velocity = 0.0
+2:0/0 = 0
+2:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:0/0/physics_layer_0/angular_velocity = 0.0
+3:0/0 = 0
+3:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:0/0/physics_layer_0/angular_velocity = 0.0
+4:0/0 = 0
+4:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+4:0/0/physics_layer_0/angular_velocity = 0.0
+5:0/0 = 0
+5:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+5:0/0/physics_layer_0/angular_velocity = 0.0
+0:1/0 = 0
+0:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:1/0/physics_layer_0/angular_velocity = 0.0
+1:1/0 = 0
+1:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:1/0/physics_layer_0/angular_velocity = 0.0
+2:1/0 = 0
+2:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:1/0/physics_layer_0/angular_velocity = 0.0
+4:1/0 = 0
+4:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+4:1/0/physics_layer_0/angular_velocity = 0.0
+5:1/0 = 0
+5:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+5:1/0/physics_layer_0/angular_velocity = 0.0
+2:2/0 = 0
+2:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:2/0/physics_layer_0/angular_velocity = 0.0
+0:3/0 = 0
+0:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:3/0/physics_layer_0/angular_velocity = 0.0
+1:3/0 = 0
+1:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:3/0/physics_layer_0/angular_velocity = 0.0
+1:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+2:3/0 = 0
+2:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:3/0/physics_layer_0/angular_velocity = 0.0
+3:3/0 = 0
+3:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:3/0/physics_layer_0/angular_velocity = 0.0
+4:3/0 = 0
+4:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+4:3/0/physics_layer_0/angular_velocity = 0.0
+5:3/0 = 0
+5:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+5:3/0/physics_layer_0/angular_velocity = 0.0
+6:3/0 = 0
+6:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+6:3/0/physics_layer_0/angular_velocity = 0.0
+
+[sub_resource type="TileSet" id="TileSet_ocns6"]
+tile_size = Vector2i(64, 64)
+physics_layer_0/collision_layer = 1
+navigation_layer_0/layers = 1
+sources/0 = SubResource("TileSetAtlasSource_cj5lx")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cg41n"]
+size = Vector2(53, 51)
+
+[sub_resource type="Animation" id="Animation_nruk7"]
+resource_name = "new_animation"
+length = 1.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1, 0.4, 0.8, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("4_1ka4x"), ExtResource("6_4fdfm"), ExtResource("5_brcmo"), ExtResource("6_4fdfm")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_n8y16"]
+_data = {
+"idle": SubResource("Animation_nruk7")
+}
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_7aas6"]
+friction = 0.0
+
+[sub_resource type="Animation" id="Animation_cyajc"]
+resource_name = "idle"
+length = 1.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("6_48o1o"), ExtResource("7_j8scm"), ExtResource("8_vt6qi"), ExtResource("9_1lnji")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_b2ual"]
+_data = {
+"idle": SubResource("Animation_cyajc")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pmjmm"]
+size = Vector2(56, 56)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+position = Vector2(-2, 0)
+tile_set = SubResource("TileSet_ocns6")
+format = 2
+layer_0/tile_data = PackedInt32Array(7, 0, 3, 6, 0, 3, 5, 0, 3, 4, 0, 3, 3, 0, 3, 2, 0, 3, 1, 0, 3, 0, 0, 3, 458752, 0, 3, 458758, 0, 3, 458757, 0, 3, 458759, 0, 3, 458756, 0, 3, 458755, 0, 3, 458754, 0, 3, 458753, 0, 3, 65536, 0, 3, 131072, 0, 3, 196608, 0, 3, 65537, 0, 3, 131073, 0, 3, 196609, 0, 3, 65538, 0, 3, 131074, 0, 3, 196610, 0, 3, 65539, 0, 3, 131075, 0, 3, 196611, 0, 3, 65540, 0, 3, 131076, 0, 3, 196612, 0, 3, 65541, 0, 3, 131077, 0, 3, 196613, 0, 3, 65542, 0, 3, 131078, 0, 3, 196614, 0, 3, 65543, 0, 3, 131079, 0, 3, 196615, 0, 3, 262144, 0, 3, 327680, 0, 3, 393216, 0, 3, 262145, 0, 3, 327681, 0, 3, 393217, 0, 3, 262146, 0, 3, 327682, 0, 3, 393218, 0, 3, 262147, 0, 3, 327683, 0, 3, 393219, 0, 3, 262148, 0, 3, 327684, 0, 3, 393220, 0, 3, 262149, 0, 3, 327685, 0, 3, 393221, 0, 3, 262150, 0, 3, 327686, 0, 3, 393222, 0, 3, 262151, 0, 3, 327687, 0, 3, 393223, 0, 3)
+layer_1/tile_data = PackedInt32Array(458759, 65536, 3, 393223, 65536, 3, 327687, 65536, 3, 262151, 65536, 3, 196615, 65536, 3, 131079, 65536, 3, 65543, 65536, 3, 7, 65536, 3, 6, 65536, 3, 5, 65536, 3, 4, 65536, 3, 3, 65536, 3, 2, 65536, 3, 1, 65536, 3, 0, 65536, 3, 65536, 65536, 3, 131072, 65536, 3, 196608, 65536, 3, 262144, 65536, 3, 327680, 65536, 3, 393216, 65536, 3, 458752, 65536, 3, 458753, 65536, 3, 458754, 65536, 3, 458755, 65536, 3, 458756, 65536, 3, 458757, 65536, 3, 458758, 65536, 3, 65537, 65536, 3, 65538, 65536, 3, 65539, 65536, 3, 65540, 65536, 3, 65541, 65536, 3, 65542, 65536, 3, 262145, 65536, 3, 262146, 65536, 3, 262147, 65536, 3, 262148, 65536, 3, 327683, 65536, 3, 327684, 65536, 3, 262150, 65536, 3, 327686, 65536, 3, 131074, 65536, 3, 131075, 65536, 3, 393217, 196608, 3, 196614, 131072, 3)
+
+[node name="Player" type="Area2D" parent="."]
+light_mask = 0
+position = Vector2(96, 160)
+priority = 1
+script = ExtResource("1_a2yem")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2(-1.5, 0.5)
+shape = SubResource("RectangleShape2D_cg41n")
+
+[node name="RayCast2D" type="RayCast2D" parent="Player"]
+collide_with_areas = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+position = Vector2(-1.90735e-06, -16)
+scale = Vector2(4, 4)
+texture = ExtResource("6_4fdfm")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Player"]
+libraries = {
+"": SubResource("AnimationLibrary_n8y16")
+}
+speed_scale = 1.5
+
+[node name="Enemy" type="RigidBody2D" parent="."]
+position = Vector2(288, 240)
+physics_material_override = SubResource("PhysicsMaterial_7aas6")
+gravity_scale = 0.0
+continuous_cd = 2
+linear_damp_mode = 1
+angular_damp_mode = 1
+script = ExtResource("6_01eos")
+
+[node name="RayCast2D" type="RayCast2D" parent="Enemy"]
+collide_with_areas = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Enemy"]
+position = Vector2(0, -32)
+scale = Vector2(2, 2)
+texture = ExtResource("9_1lnji")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Enemy"]
+libraries = {
+"": SubResource("AnimationLibrary_b2ual")
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy"]
+position = Vector2(-4, -12)
+shape = SubResource("RectangleShape2D_pmjmm")
+
+[connection signal="body_shape_entered" from="Player" to="Enemy" method="_on_player_body_shape_entered"]
+[connection signal="enemys_turn" from="Player" to="Enemy" method="_on_player_enemys_turn"]
+[connection signal="players_turn" from="Enemy" to="Player" method="_on_enemy_players_turn"]
