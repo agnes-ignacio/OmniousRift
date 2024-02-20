@@ -8,19 +8,17 @@ var inputs = {"Right": Vector2.RIGHT,
 @onready var ray = $RayCast2D
 var animation_speed = 3
 var moving = false
-signal enemys_turn()
-var is_players_turn 
 var last_direction
 var health = 10
-signal enemy_is_damaged(damage)
-
+signal attacking(damage)
+signal finished()
+var is_players_turn
 
 func _ready():
 	position = position.snapped(Vector2.ONE * tile_size)
 	position += Vector2.ONE * tile_size/2
 	$AnimationPlayer.play("idle")
 	set_health_label()
-	is_players_turn = true
 
 func set_health_label():
 	$HealthBar.value = health
@@ -36,7 +34,7 @@ func _physics_process(delta):
 	if has_overlapping_bodies():
 		var dir = invert_direction(last_direction)
 		position = position + inputs[dir] * tile_size
-
+	
 func move(dir):
 	if is_players_turn:
 		if dir == "Left":
@@ -52,11 +50,11 @@ func move(dir):
 		else:
 			var collider = ray.get_collider()
 			if collider.name.contains("Enemy"):
-				attack()
-		enemys_turn.emit()
+				attack(collider)
+			end_turn()
 
-func attack():
-	enemy_is_damaged.emit(1)
+func attack(enemy):
+	attacking.emit(enemy, 1)
 	if $Sprite2D.flip_h:
 		$AnimationPlayer.play("attack (flipped)")
 	else:
@@ -67,9 +65,8 @@ func attack():
 
 func end_turn():
 	moving = false
-	if get_tree().get_nodes_in_group("enemies"):
-		print("entrou")
-		is_players_turn = false
+	is_players_turn = false
+	finished.emit()
 
 func invert_direction(dir):
 	if dir == "Up":
@@ -81,10 +78,5 @@ func invert_direction(dir):
 	elif dir == "Left":
 		return "Right"
 
-func _on_enemy_players_turn():
+func _on_node_2d_players_turn():
 	is_players_turn = true
-
-
-func _on_enemy_player_is_damaged(damage):
-	health -= damage
-	set_health_label()

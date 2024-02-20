@@ -1,6 +1,7 @@
-[gd_scene load_steps=17 format=3 uid="uid://dv3wgmql0hddn"]
+[gd_scene load_steps=18 format=3 uid="uid://dv3wgmql0hddn"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_a2yem"]
+[ext_resource type="Script" path="res://Scripts/controller.gd" id="1_p8mnt"]
 [ext_resource type="Texture2D" uid="uid://dw10cx88qlh28" path="res://art/regina_idle01.png" id="3_4rbho"]
 [ext_resource type="Texture2D" uid="uid://dw1ejynnt6w6b" path="res://art/regina_idle02.png" id="4_wybg5"]
 [ext_resource type="Texture2D" uid="uid://h721gum7pqdw" path="res://art/regina_idle03.png" id="5_oapgw"]
@@ -2039,6 +2040,7 @@ border_color = Color(0.482353, 0.541176, 0.776471, 1)
 
 [node name="Node2D" type="Node2D"]
 position = Vector2(-36, -76)
+script = ExtResource("1_p8mnt")
 metadata/_edit_horizontal_guides_ = [144.0]
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -2085,15 +2087,21 @@ metadata/_edit_use_anchors_ = true
 [node name="Enemy1" parent="." groups=["enemies"] instance=ExtResource("8_wmctx")]
 position = Vector2(231, 153)
 
-[node name="Enemy2" parent="Enemy1" instance=ExtResource("8_wmctx")]
+[node name="Enemy2" parent="." groups=["enemies"] instance=ExtResource("8_wmctx")]
+position = Vector2(150, 102)
 
-[connection signal="area_entered" from="Player" to="Player" method="_on_area_entered"]
-[connection signal="area_entered" from="Player" to="Enemy1" method="_on_player_area_entered"]
-[connection signal="area_exited" from="Player" to="Player" method="_on_area_exited"]
-[connection signal="area_exited" from="Player" to="Enemy1" method="_on_player_area_exited"]
-[connection signal="enemy_is_damaged" from="Player" to="Enemy1" method="_on_player_enemy_is_damaged"]
-[connection signal="enemys_turn" from="Player" to="Enemy1" method="_on_player_enemys_turn"]
-[connection signal="player_is_damaged" from="Enemy1" to="Player" method="_on_enemy_player_is_damaged"]
-[connection signal="players_turn" from="Enemy1" to="Player" method="_on_enemy_players_turn"]
+[node name="HealthBar" parent="Enemy2" index="5"]
+metadata/_edit_use_anchors_ = true
+
+[connection signal="enemies_turn" from="." to="Enemy1" method="_on_node_2d_enemies_turn"]
+[connection signal="enemies_turn" from="." to="Enemy2" method="_on_node_2d_enemies_turn"]
+[connection signal="players_turn" from="." to="Player" method="_on_node_2d_players_turn"]
+[connection signal="attacking" from="Player" to="." method="_on_player_attacking"]
+[connection signal="finished" from="Player" to="." method="_on_player_finished"]
+[connection signal="attacking" from="Enemy1" to="." method="_on_enemy_attacking"]
+[connection signal="area_entered" from="Enemy1/Range" to="Enemy1" method="_on_range_area_entered"]
+[connection signal="area_exited" from="Enemy1/Range" to="Enemy1" method="_on_range_area_exited"]
+[connection signal="attacking" from="Enemy2" to="." method="_on_enemy_attacking"]
 
 [editable path="Enemy1"]
+[editable path="Enemy2"]
