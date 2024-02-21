@@ -31,7 +31,7 @@ func move(dir: String = ""):
 
 	ray.target_position = inputs[dir] * tile_size
 	ray.force_raycast_update()
-	if !ray.is_colliding() || ray.get_collider().name.begins_with("Enemy"):
+	if !ray.is_colliding() || (ray.get_collider().name != "Player" && ray.get_collider().name != "TileMap" && !ray.get_collider().name.begins_with("Enemy")):
 		position = position + inputs[dir] * tile_size
 
 func pursuit():
@@ -39,24 +39,36 @@ func pursuit():
 	if position.y - players_position.y > tile_size && position.y - players_position.y >= position.x - players_position.x:
 		ray.target_position = inputs["Up"] * tile_size
 		ray.force_raycast_update()
-		if !ray.is_colliding():
-			move("Up")
+		if !ray.is_colliding() || (ray.get_collider().name != "Player" && ray.get_collider().name != "TileMap"):
+			if (ray.is_colliding() && !ray.get_collider().name.begins_with("Enemy")) || !ray.is_colliding():
+				move("Up")
+			else:
+				move()
 	elif position.y - players_position.y < -tile_size && position.y - players_position.y <= position.x - players_position.x:
 		ray.target_position = inputs["Down"] * tile_size
 		ray.force_raycast_update()
-		if !ray.is_colliding():
-			move("Down")
+		if !ray.is_colliding() || (ray.get_collider().name != "Player" && ray.get_collider().name != "TileMap"):
+			if (ray.is_colliding() && !ray.get_collider().name.begins_with("Enemy"))  || !ray.is_colliding():
+				move("Down")
+			else:
+				move()
 	elif position.x - players_position.x > tile_size:
 		ray.target_position = inputs["Left"] * tile_size
 		ray.force_raycast_update()
-		if !ray.is_colliding():
-			move("Left")
+		if !ray.is_colliding() || (ray.get_collider().name != "Player" && ray.get_collider().name != "TileMap"):
+			if (ray.is_colliding() && !ray.get_collider().name.begins_with("Enemy"))  || !ray.is_colliding():
+				move("Left")
+			else:
+				move()
 	elif position.x - players_position.x < -tile_size:
 		ray.target_position = inputs["Right"] * tile_size
 		ray.force_raycast_update()
-		if !ray.is_colliding():
-			move("Right")
-	elif (position.x - players_position.x <= tile_size) || position.y - players_position.y < -tile_size:
+		if !ray.is_colliding() || (ray.get_collider().name != "Player" && ray.get_collider().name != "TileMap"):
+			if (ray.is_colliding() && !ray.get_collider().name.begins_with("Enemy"))  || !ray.is_colliding():
+				move("Right")
+			else:
+				move()
+	elif (position.x - players_position.x < tile_size) || position.y - players_position.y < -tile_size:
 		attack()
 
 func set_health_bar():
@@ -76,7 +88,6 @@ func _on_node_2d_enemies_turn():
 		pursuit()
 	else:
 		move()
-
 
 func _on_range_area_entered(area):
 	if area.name == "Player":

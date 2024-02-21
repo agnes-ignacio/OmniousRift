@@ -2099,9 +2099,12 @@ metadata/_edit_use_anchors_ = true
 [connection signal="attacking" from="Player" to="." method="_on_player_attacking"]
 [connection signal="finished" from="Player" to="." method="_on_player_finished"]
 [connection signal="attacking" from="Enemy1" to="." method="_on_enemy_attacking"]
+[connection signal="body_entered" from="Enemy1" to="Enemy1" method="_on_body_entered"]
 [connection signal="area_entered" from="Enemy1/Range" to="Enemy1" method="_on_range_area_entered"]
 [connection signal="area_exited" from="Enemy1/Range" to="Enemy1" method="_on_range_area_exited"]
 [connection signal="attacking" from="Enemy2" to="." method="_on_enemy_attacking"]
+[connection signal="area_entered" from="Enemy2/Range" to="Enemy2" method="_on_range_area_entered"]
+[connection signal="area_exited" from="Enemy2/Range" to="Enemy2" method="_on_range_area_exited"]
 
 [editable path="Enemy1"]
 [editable path="Enemy2"]

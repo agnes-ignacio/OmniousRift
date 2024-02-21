@@ -4,7 +4,11 @@ var tile_size = 16
 var inputs = {"Right": Vector2.RIGHT,
 "Left": Vector2.LEFT,
 "Down": Vector2.DOWN,
-"Up": Vector2.UP}
+"Up": Vector2.UP,
+"UpLeft": Vector2(-1, -1),
+"UpRight": Vector2(1, -1),
+"DownLeft": Vector2(-1, 1),
+"DownRight": Vector2(1, 1)}
 @onready var ray = $RayCast2D
 var animation_speed = 3
 var moving = false
@@ -26,10 +30,24 @@ func set_health_label():
 func _unhandled_input(event):
 	if moving:
 		return
-	for dir in inputs.keys():
-		if event.is_action_pressed(dir):
-			move(dir)
-
+		
+	if (event.is_action_pressed("Up") && Input.is_key_pressed(KEY_LEFT)) || (event.is_action_pressed("Left") && Input.is_key_pressed(KEY_UP)):
+		move("UpLeft") 
+	elif (event.is_action_pressed("Up") && Input.is_key_pressed(KEY_RIGHT)) || (event.is_action_pressed("Right") && Input.is_key_pressed(KEY_UP)):
+		move("UpRight")
+	elif (event.is_action_pressed("Down") && Input.is_key_pressed(KEY_LEFT)) || (event.is_action_pressed("Left") && Input.is_key_pressed(KEY_DOWN)):
+		move("DownLeft")
+	elif (event.is_action_pressed("Down") && Input.is_key_pressed(KEY_RIGHT)) || (event.is_action_pressed("Right") && Input.is_key_pressed(KEY_DOWN)):
+		move("DownRight")
+	elif event.is_action_pressed("Up"):
+		move("Up")
+	elif event.is_action_pressed("Down"):
+		move("Down")
+	elif event.is_action_pressed("Left"):
+		move("Left")
+	elif event.is_action_pressed("Right"):
+		move("Right")
+	
 func _physics_process(delta):
 	if has_overlapping_bodies():
 		var dir = invert_direction(last_direction)
@@ -77,6 +95,14 @@ func invert_direction(dir):
 		return "Left"
 	elif dir == "Left":
 		return "Right"
+	elif dir == "Up/Left":
+		return "Down/Right"
+	elif dir == "Down/Right":
+		return "Up/Left"
+	elif dir == "Down/Left":
+		return "Up/Right"
+	elif dir == "Up/Right":
+		return "Down/Left"
 
 func _on_node_2d_players_turn():
 	is_players_turn = true

@@ -34,7 +34,6 @@ func finish_battle():
 func game_over():
 	pass
 
-
 func _on_player_attacking(enemy, damage):
 	enemy.health -= damage
 	enemy.set_health_bar()
